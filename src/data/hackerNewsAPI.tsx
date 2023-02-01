@@ -1,5 +1,6 @@
 export const mainUrl = 'https://hacker-news.firebaseio.com/v0/';
 export const topStoriesUrl = `${mainUrl}topstories.json`;
+export const listingUrl = `${mainUrl}item/`;
 
 export const getListingIds = async () => {
   const result = await fetch(topStoriesUrl)
@@ -7,6 +8,14 @@ export const getListingIds = async () => {
   .then(data => data);
   return result;
 }
+
+export const getEachStory = async (listingId:Number) => {
+    const result = await fetch(`${listingUrl + listingId}.json`)
+    .then(response => response.json())
+    .then((data) => data);
+  
+    return result;
+  }
 
 function hackerNewsApi() {
   return (
