@@ -8,6 +8,7 @@ const Container = styled.div`
     align-items: center;
      width: 100%;
     height: fit-content;
+    background: linear-gradient(90deg, #02345A, #008793, #00bf72);
     `;
 
 function Home() {

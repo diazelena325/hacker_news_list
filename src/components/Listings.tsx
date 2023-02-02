@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getListingIds } from '../data/hackerNewsAPI';
+import useInfiniteScroll  from "../hooks/useInfiniteScroll";
 import NewsStory from './NewsStory';
 
 const Container = styled.div`
@@ -16,7 +17,7 @@ const MainTitle = styled.h1`
 `;
 
 function Listings() {
-
+    const {count} = useInfiniteScroll();
     const [listingIds, setListingIds] = useState([]);
 
     useEffect(() => {
@@ -26,9 +27,7 @@ function Listings() {
     return (
         <Container>
             <MainTitle>Hacker News List</MainTitle>
-            {
-                listingIds.map(id => <NewsStory listingId={id} key={id}/>)
-            }
+            {listingIds.slice(0, count).map(id => (<NewsStory listingId={id} key={id}/>))}
         </Container>
 
     )
