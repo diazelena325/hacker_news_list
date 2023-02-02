@@ -7,7 +7,7 @@ const StoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem 0.6rem;
+    padding: 5px 6px;
     border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.4);
     border-right: 1px solid rgba(255,255,255,0.2);
@@ -16,7 +16,7 @@ const StoryContainer = styled.div`
     backdrop-filter: blur(5px);
     transition: all .4s ease;
     overflow: hidden;
-    margin: 0.4rem;
+    margin: 5px;
     text-align: start;
 
     &:hover {
@@ -50,7 +50,7 @@ const NoUrlStoryContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem 0.6rem;
+    padding: 5px 6px;
     border-radius: 10px;
     border: 2.5px solid rgba(12, 12, 12, 0.4);
     border-right: 1px solid #51515133;
@@ -59,14 +59,14 @@ const NoUrlStoryContainer = styled.div`
     backdrop-filter: blur(5px);
     transition: all .4s ease;
     overflow: hidden;
-    margin: 10px;
+    margin: 5px;
     text-align: start;
     color: #cacacada;
     background-color: rgba(71, 71, 71, 0.265);
 `;
 
 const Title = styled.span`
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     justify-content: flex-start;
     align-content: flex-start;
@@ -132,16 +132,14 @@ export const NewsStory = ({ listingId }: { [key: string]: any }) => {
             {url ?
                 <Link href={story.url} target="_blank" rel='noreferrer' data-testid="link"> <StoryContainer data-testid="story">
                     <Title>{story.title}</Title>
-                    <Details data-testid="story-by">By: {story.by}</Details>
-                    <Details>{story.descendants} Comments</Details>
-                    <Details>{handleDate(story.time)} ago</Details>
+                    <Details data-testid="story-by">By: {story.by}  |  {handleDate(story.time)} ago</Details> 
+                    <Details>{story.descendants} Comments</Details> 
                 </StoryContainer></Link>
                 :
                 <NoUrlStoryContainer data-testid="nourlstory">
                     <Title>{story.title}</Title>
-                    <Details data-testid="story-by">By: {story.by}</Details>
+                    <Details data-testid="story-by">By: {story.by}  |  {handleDate(story.time)} ago</Details> 
                     <Details>{story.descendants} Comments</Details>
-                    <Details>{handleDate(story.time)} ago</Details>
                 </NoUrlStoryContainer>}
         </div>
     )

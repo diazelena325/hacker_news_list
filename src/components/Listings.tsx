@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getListingIds } from '../data/hackerNewsAPI';
 import useInfiniteScroll  from "../hooks/useInfiniteScroll";
+import Loader from './Loader';
 import NewsStory from './NewsStory';
 
 const Container = styled.div`
@@ -13,20 +14,21 @@ const Container = styled.div`
 `;
 
 const MainTitle = styled.h1`
-    
+    color: #fffffff5;
 `;
 
 function Listings() {
     const {count} = useInfiniteScroll();
     const [listingIds, setListingIds] = useState([]);
+    const [loading, setLoader] = useState(true);
 
     useEffect(() => {
-        getListingIds().then(data => { setListingIds(data); });
+        getListingIds().then(data => { setListingIds(data); setLoader(false); });
     }, []);
-
     return (
         <Container>
             <MainTitle>Hacker News List</MainTitle>
+            {loading && (<Loader/>)}
             {listingIds.slice(0, count).map(id => (<NewsStory listingId={id} key={id}/>))}
         </Container>
 
