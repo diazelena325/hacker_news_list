@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering listing ids component with content 1`] = `
+Array [
+  1,
+]
+`;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getEachStory } from '../data/hackerNewsAPI';
 

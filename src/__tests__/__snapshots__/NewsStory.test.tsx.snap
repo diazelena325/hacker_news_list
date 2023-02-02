@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering News story component with content 1`] = `
+Object {
+  "by": "Jim Halpert",
+  "id": 1,
+  "time": 1675362380,
+  "title": "Office Technology",
+  "url": "https://theoffice.com",
+}
+`;
+
