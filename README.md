@@ -1,3 +1,32 @@
+# Hacker News List
+![Hacker News Example](https://github.com/diazelena325/hacker_news_list/blob/main/hackernewslist.png)
+
+Displays Hacker News list top 500 stories in React, Typescript, and styled components using [Hacker News API](https://github.com/HackerNews/API).
+
+Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json
+Individual Story: https://hacker-news.firebaseio.com/v0/item/{itemId}.json
+
+## Styling
+Before loading the first 30 stories, a loader is displayed. Infinite scrolling is then initiated to load the next 30 news stories. 
+
+Each story is created with glassmorphism card style. If the story has a url, the card will be indented and has animation when hovering to mimick glass while it eases up. It then navigates to the url as a new tab. For stories without url, the card still displays the same information but is recessed.
+
+## Testing
+Unit testing files and snapshots located in `__test__` folder.
+### App.test.tsx
+Test components and elements are rendered.
+
+### HackerNewsApi.test.tsx 
+Test fetch functionality.
+
+### Listings.test.tsx
+Testing mock function of getListingIds from mock data in fixtures. Snapshot created.
+
+### NewsStory.test.tsx
+Testing mock function of getEachStory from mock data in fixtures. Snapshot created.
+
+#
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

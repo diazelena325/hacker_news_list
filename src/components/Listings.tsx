@@ -25,6 +25,7 @@ function Listings() {
     useEffect(() => {
         getListingIds().then(data => { setListingIds(data); setLoader(false); });
     }, []);
+    
     return (
         <Container>
             <MainTitle>Hacker News List</MainTitle>

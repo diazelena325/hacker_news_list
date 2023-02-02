@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getEachStory } from '../data/hackerNewsAPI';
 
@@ -94,6 +94,7 @@ export const NewsStory = ({ listingId }: { [key: string]: any }) => {
     if (!story.url) {
         url = false;
     }
+    
     const handleDate = (time: any) => {
         let newDate: any = new Date();
         const seconds = Math.floor((newDate - time * 1000) / 1000)
@@ -130,15 +131,17 @@ export const NewsStory = ({ listingId }: { [key: string]: any }) => {
     return (
         <div>
             {url ?
-                <Link href={story.url} target="_blank" rel='noreferrer' data-testid="link"> <StoryContainer data-testid="story">
+                <Link href={story.url} target="_blank" rel='noreferrer'> 
+                <StoryContainer>
                     <Title>{story.title}</Title>
-                    <Details data-testid="story-by">By: {story.by}  |  {handleDate(story.time)} ago</Details> 
+                    <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details> 
                     <Details>{story.descendants} Comments</Details> 
-                </StoryContainer></Link>
+                </StoryContainer>
+                </Link>
                 :
-                <NoUrlStoryContainer data-testid="nourlstory">
+                <NoUrlStoryContainer>
                     <Title>{story.title}</Title>
-                    <Details data-testid="story-by">By: {story.by}  |  {handleDate(story.time)} ago</Details> 
+                    <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details> 
                     <Details>{story.descendants} Comments</Details>
                 </NoUrlStoryContainer>}
         </div>
