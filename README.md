@@ -3,7 +3,7 @@
 
 Displays Hacker News list top 500 stories in React, Typescript, and styled components using [Hacker News API](https://github.com/HackerNews/API).
 
-Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json\
+Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json \
 Individual Story: https://hacker-news.firebaseio.com/v0/item/{itemId}.json
 
 ## Styling
