@@ -1,5 +1,5 @@
 # Hacker News List
-![Hacker News Example](https://github.com/diazelena325/hacker_news_list/blob/main/hackernewslist.png)
+![Hacker News Example](https://github.com/diazelena325/hacker_news_list/blob/main/hackernewslist_ex.png)
 
 Displays Hacker News list top 500 stories in React, Typescript, and styled components using [Hacker News API](https://github.com/HackerNews/API).
 
