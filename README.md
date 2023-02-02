@@ -1,6 +1,8 @@
 # Hacker News List
 ![Hacker News Example](https://github.com/diazelena325/hacker_news_list/blob/main/hackernewslist_ex.png)
 
+Live Demo can be found [here](https://projects.elenadiaz.space/)
+
 Displays Hacker News list top 500 stories in React, Typescript, and styled components using [Hacker News API](https://github.com/HackerNews/API).
 
 Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json \
