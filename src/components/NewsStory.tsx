@@ -83,8 +83,29 @@ const Details = styled.span`
     font-size: 0.8rem;
 `;
 
-export const NewsStory = ({ listingId }: { [key: string]: any }) => {
-    const [story, setStory] = useState<any>([]);
+export function NewsStory( { listingId }: { [key: string]: any }) {
+
+    const [story, setStory] = useState<{
+        by: string;
+        descendants: number;
+        id: number;
+        kids: number[];
+        score: number;
+        time: number;
+        title: string;
+        type: string;
+        url: string;
+    }>( {
+        by: "",
+        descendants: 0,
+        id: 0,
+        kids: [0],
+        score: 0,
+        time: 0,
+        title: "",
+        type: "",
+        url: ""
+      });
     let url = true;
 
     useEffect(() => {
@@ -94,8 +115,8 @@ export const NewsStory = ({ listingId }: { [key: string]: any }) => {
     if (!story.url) {
         url = false;
     }
-    
-    const handleDate = (time: any) => {
+
+    const handleDate = (time: number) => {
         let newDate: any = new Date();
         const seconds = Math.floor((newDate - time * 1000) / 1000)
 
@@ -131,17 +152,17 @@ export const NewsStory = ({ listingId }: { [key: string]: any }) => {
     return (
         <div>
             {url ?
-                <Link href={story.url} target="_blank" rel='noreferrer'> 
-                <StoryContainer>
-                    <Title>{story.title}</Title>
-                    <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details> 
-                    <Details>{story.descendants} Comments</Details> 
-                </StoryContainer>
+                <Link href={story.url} target="_blank" rel='noreferrer'>
+                    <StoryContainer>
+                        <Title>{story.title}</Title>
+                        <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details>
+                        <Details>{story.descendants} Comments</Details>
+                    </StoryContainer>
                 </Link>
                 :
                 <NoUrlStoryContainer>
                     <Title>{story.title}</Title>
-                    <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details> 
+                    <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details>
                     <Details>{story.descendants} Comments</Details>
                 </NoUrlStoryContainer>}
         </div>

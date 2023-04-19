@@ -19,18 +19,23 @@ const MainTitle = styled.h1`
 
 function Listings() {
     const {count} = useInfiniteScroll();
-    const [listingIds, setListingIds] = useState([]);
-    const [loading, setLoader] = useState(true);
+    const [listingIds, setListingIds] = useState<number[]>([]);
+    const [loading, setLoader] = useState<boolean>(true);
 
     useEffect(() => {
         getListingIds().then(data => { setListingIds(data); setLoader(false); });
+        console.log("listingId: " + listingIds);
     }, []);
     
     return (
         <Container>
             <MainTitle>Hacker News List</MainTitle>
             {loading && (<Loader/>)}
-            {listingIds.slice(0, count).map(id => (<NewsStory listingId={id} key={id}/>))}
+            {listingIds.slice(0, count).map(id => (
+               
+                
+            <NewsStory listingId={id} key={id} />
+            ))}
         </Container>
 
     )

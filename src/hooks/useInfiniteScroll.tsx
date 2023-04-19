@@ -25,13 +25,14 @@ function useInfiniteScroll() {
             setCount(count + STORY_INCREMENT);
         }
         setScrolling(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrolling]);
 
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    });
 
     return { count };
 

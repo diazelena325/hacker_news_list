@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && XCOPY C:\\Dev\\hacker_news_list\\build\\* C:\\Prod\\projects_prod /s /y && RMDIR /s /q C:\\Dev\\hacker_news_list\\build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

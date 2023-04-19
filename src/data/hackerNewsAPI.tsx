@@ -2,25 +2,29 @@ export const mainUrl = 'https://hacker-news.firebaseio.com/v0/';
 export const topStoriesUrl = `${mainUrl}topstories.json`;
 export const listingUrl = `${mainUrl}item/`;
 
-export const getListingIds = async () => {
-  const result = await fetch(topStoriesUrl)
-  .then(response => response.json())
-  .then(data => data);
+export async function getListingIds() {
+  const result: number[] = await fetch(topStoriesUrl)
+    .then(response => response.json())
+    .then(data => data);
+
   return result;
 }
+export async function getEachStory(nsId : number) {
+  const result :
+    {
+      by: string;
+      descendants: number;
+      id: number;
+      kids: number[];
+      score: number;
+      time: number;
+      title: string;
+      type: string;
+      url: string;
+    }
+    = await fetch(`${listingUrl + nsId}.json`)
+      .then(response => response.json())
+      .then((data) => data);
 
-export const getEachStory = async (listingId:Number) => {
-    const result = await fetch(`${listingUrl + listingId}.json`)
-    .then(response => response.json())
-    .then((data) => data);
-  
-    return result;
-  }
-
-function hackerNewsApi() {
-  return (
-    <div></div>
-  )
+  return result;
 }
-
-export default hackerNewsApi
