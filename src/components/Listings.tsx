@@ -24,7 +24,7 @@ function Listings() {
 
     useEffect(() => {
         getListingIds().then(data => { setListingIds(data); setLoader(false); });
-        console.log("listingId: " + listingIds);
+      
     }, []);
     
     return (
