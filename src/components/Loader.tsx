@@ -1,3 +1,4 @@
+/*Loader: display loading animation while stories are loading*/
 import styled from 'styled-components';
 
 const Container = styled.div`

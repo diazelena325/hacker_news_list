@@ -10,9 +10,14 @@ const Container = styled.div`
     background: linear-gradient(90deg, #02345A, #008793, #00bf72);
     `;
 
+const MainTitle = styled.h1`
+    color: #fffffff5;
+`;
+
 function Home() {
   return (
     <Container>
+      <MainTitle>Hacker News List</MainTitle>
 <Listings/>
     </Container>
    

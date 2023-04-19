@@ -1,3 +1,4 @@
+/*Listings: Display loader until list of Ids of top stories are mapped to each News Story*/
 import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getListingIds } from '../data/hackerNewsAPI';
@@ -6,16 +7,15 @@ import Loader from './Loader';
 import NewsStory from './NewsStory';
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
     width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
     height: fit-content;
    
 `;
 
-const MainTitle = styled.h1`
-    color: #fffffff5;
-`;
 
 function Listings() {
     const {count} = useInfiniteScroll();
@@ -29,11 +29,8 @@ function Listings() {
     
     return (
         <Container>
-            <MainTitle>Hacker News List</MainTitle>
             {loading && (<Loader/>)}
-            {listingIds.slice(0, count).map(id => (
-               
-                
+            {listingIds.slice(0, count).map(id => (                
             <NewsStory listingId={id} key={id} />
             ))}
         </Container>

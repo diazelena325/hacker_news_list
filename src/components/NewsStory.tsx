@@ -1,9 +1,12 @@
+/*NewsStory: Get details of each listing ID and display each story in a container*/
 import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { getEachStory } from '../data/hackerNewsAPI';
+import LinkIcon from '@mui/icons-material/Link';
+import LinkOffIcon from '@mui/icons-material/LinkOff';
 
 const StoryContainer = styled.div`
-    width: 100%;
+     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -21,7 +24,7 @@ const StoryContainer = styled.div`
 
     &:hover {
         transition: all .4s ease;
-        transform: translateY(-10px);
+        transform: translateY(-8px);
          background-color: rgba(255, 255, 255, 0.177);
     }
 
@@ -116,6 +119,7 @@ export function NewsStory( { listingId }: { [key: string]: any }) {
         url = false;
     }
 
+    //convert time stamp to how long the article was written from current time
     const handleDate = (time: number) => {
         let newDate: any = new Date();
         const seconds = Math.floor((newDate - time * 1000) / 1000)
@@ -149,22 +153,33 @@ export function NewsStory( { listingId }: { [key: string]: any }) {
         return `${Math.floor(seconds)} seconds`;
     };
 
-    return (
-        <div>
-            {url ?
-                <Link href={story.url} target="_blank" rel='noreferrer'>
-                    <StoryContainer>
-                        <Title>{story.title}</Title>
-                        <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details>
-                        <Details>{story.descendants} Comments</Details>
-                    </StoryContainer>
-                </Link>
-                :
-                <NoUrlStoryContainer>
+    //Check if story has URL to open on new tab
+    //if URL exist, display StoryContainer and link Icon
+    //if URL does NOT exist, display NoUrlStoryContainer and LinkOff Icon
+    function StoryContent (){
+        return (
+            url ?
+            <Link href={story.url} target="_blank" rel='noreferrer'>
+                <StoryContainer>
                     <Title>{story.title}</Title>
                     <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details>
                     <Details>{story.descendants} Comments</Details>
-                </NoUrlStoryContainer>}
+                    <LinkIcon/>
+                </StoryContainer>
+            </Link>
+            :
+            <NoUrlStoryContainer>
+                <Title>{story.title}</Title>
+                <Details>By: {story.by}  |  {handleDate(story.time)} ago</Details>
+                <Details>{story.descendants} Comments</Details>
+                <LinkOffIcon/>
+            </NoUrlStoryContainer>
+        )
+    };
+
+    return (
+        <div>
+            <StoryContent />
         </div>
     )
 }
