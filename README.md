@@ -105,12 +105,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
-## Help
-
-Any advise for common problems or issues.
-
-
 ## Authors
 
 Elena Diaz
@@ -119,9 +113,6 @@ Elena Diaz
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
 
