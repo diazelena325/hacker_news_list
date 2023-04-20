@@ -14,7 +14,7 @@ Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json \
 Individual Story: https://hacker-news.firebaseio.com/v0/item/{itemId}.json
 
 ### Difficulties & Things to work on
-I had some difficulty with setting the types for the data from the API call and mapping to Newstory in Listings.tsx leaving the type 'any' in order to load the stories.
+I had some difficulty with setting the types for the data from the API call and mapping to Newstory in Listings.tsx leaving the type 'any' in order to load the stories. This is found in components folder, NewsStory.tsx:
 ```
 export function NewsStory( { listingId }: { [key: string]: any })
 ```
