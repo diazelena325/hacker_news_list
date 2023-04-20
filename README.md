@@ -1,37 +1,66 @@
 # Hacker News List
+
+Displays Hacker News list top 500 stories.
+
+## Description
 ![Hacker News Example](https://github.com/diazelena325/hacker_news_list/blob/main/hackernewslist_ex.png)
 
-Live Demo can be found [here](https://projects.elenadiaz.space/)
+Live Demo can be found [here](https://hacker-news-ediaz.netlify.app/)
 
-Displays Hacker News list top 500 stories in React, Typescript, and styled components using [Hacker News API](https://github.com/HackerNews/API).
+List of top news stories using [Hacker News API](https://github.com/HackerNews/API) created with React, Typescript, Material Ui icons, and styled components. Created this to learn more about typescript and testing with JEST. I'm most proud of overcoming the challenge of the API calls and implementing glassmorphism animation styling. 
 
+### Hacker News API used:
 Top Stories: https://hacker-news.firebaseio.com/v0/topstories.json \
 Individual Story: https://hacker-news.firebaseio.com/v0/item/{itemId}.json
 
-## Styling
+### Difficulties & Things to work on
+I had some difficulty with setting the types for the data from the API call and mapping to Newstory in Listings.tsx leaving the type 'any' in order to load the stories.
+```
+export function NewsStory( { listingId }: { [key: string]: any })
+```
+Adding more thorough testing and edge cases using Jest. Also in smaller screens, looking at the responsiveness and infinite scrolling, making sure it is loading the next stories correctly. In hooks folder, useInfiniteScroll.tsx, I added math.trunc to scrolltop because it kept getting a 0.5 difference causing it to stop loading the next set of stories.
+
+### Styling
+Used styled components to do the css within each tsx file.
+
 Before loading the first 30 stories, a loader is displayed. Infinite scrolling is then initiated to load the next 30 news stories. 
 
 Each story is created with glassmorphism card style. If the story has a url, the card will be indented and has animation when hovering to mimick glass while it eases up. It then navigates to the url as a new tab. For stories without url, the card still displays the same information but is recessed.
 
-## Testing
+### Testing
 Unit testing files and snapshots located in `__test__` folder.
-### App.test.tsx
-Test components and elements are rendered.
 
-### HackerNewsApi.test.tsx 
-Test fetch functionality.
+App.test.tsx: Test components and elements are rendered.
+HackerNewsApi.test.tsx: Test fetch functionality.
+Listings.test.tsx: Testing mock function of getListingIds from mock data in fixtures. Snapshot created.
+NewsStory.test.tsx: Testing mock function of getEachStory from mock data in fixtures. Snapshot created.
 
-### Listings.test.tsx
-Testing mock function of getListingIds from mock data in fixtures. Snapshot created.
+## Getting Started
 
-### NewsStory.test.tsx
-Testing mock function of getEachStory from mock data in fixtures. Snapshot created.
+### Dependencies
 
-#
+This project was bootstrapped in Visual Studio Code with [Create React App](https://github.com/facebook/create-react-app).
+```
+npx create-react-app . --template typescript
+```
+Styled Components
+```
+npm i @types/styled-components
+npm install --save styled-components
+```
 
-# Getting Started with Create React App
+Material UI icons used to show when URL exist.
+```
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Executing program
+
+* In order to run this in VS code, using terminal command:
+```
+yarn start
+```
 
 ## Available Scripts
 
@@ -75,3 +104,32 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Help
+
+Any advise for common problems or issues.
+
+
+## Authors
+
+Elena Diaz
+[@twitter: elenadiaz32505](https://twitter.com/ElenaDiaz32505)
+[@linkedin: elenadiazse](https://www.linkedin.com/in/elenadiazse/)
+
+## Version History
+
+* 0.2
+    * Various bug fixes and optimizations
+    * See [commit change]() or See [release history]()
+* 0.1
+    * Initial Release
+
+## Acknowledgments
+
+Inspiration, code snippets, dependencies etc.
+* [awesome-readme](https://github.com/matiassingers/awesome-readme)
+* [Create-React-App-Typescript](https://create-react-app.dev/docs/adding-typescript/)
+* [material-ui-icons](https://mui.com/material-ui/material-icons/)
+* [Glassmorphism-icon-hover](https://codepen.io/GeeHsu/pen/jOMJMLe)
+* [netlify](https://www.netlify.com/)
